@@ -17,7 +17,7 @@ def sixhump_camel_function():
 
     gradient = {'x': g_x, 'y': g_y}
 
-    x_start = 2.5
+    x_start = 1
     y_start = 1
 
     theta = [x_start, y_start]
