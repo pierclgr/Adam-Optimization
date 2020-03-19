@@ -152,11 +152,11 @@ def plot_graph(data, axis='x'):
     ax.set_title(axis.upper() + " axis")
     plt.title = axis + " value"
 
-    plt.plot(data['sgd'], lw=2, color="cyan")
-    plt.plot(data['adam'], lw=2, color="magenta")
-    plt.plot(data['adamax'], lw=2, color="blue")
-    plt.plot(data['nadam'], lw=2, color="red")
-    plt.plot(data['amsgrad'], lw=2, color="yellow")
+    plt.plot(data['sgd'], color="cyan")
+    plt.plot(data['adam'], color="magenta")
+    plt.plot(data['adamax'], color="blue")
+    plt.plot(data['nadam'], color="red")
+    plt.plot(data['amsgrad'], color="yellow")
     plt.ylabel(axis)
     plt.xlabel('iterations')
     plt.legend(['SGD', 'ADAM', 'ADAMAX', 'NADAM', 'AMSGRAD'], loc='upper right')
