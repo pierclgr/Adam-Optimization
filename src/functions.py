@@ -43,6 +43,6 @@ def easom_function():
 
     theta = [x_start, y_start]
 
-    X, Y = np.mgrid[0:5:50j, 0:5:50j]
+    X, Y = np.mgrid[-2.5:7.5:50j, -2.5:7.5:50j]
 
     return f, X, Y, gradient, theta
