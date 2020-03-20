@@ -14,9 +14,9 @@ print_introduction("Six-hump Camel")
 
 # f, X, Y, gradient, theta = easom_function()
 
-#f, X, Y, gradient, theta = sixhump_camel_function()
+# f, X, Y, gradient, theta = sixhump_camel_function()
 
-#f, X, Y, gradient, theta = bukin_n6_function()
+# f, X, Y, gradient, theta = bukin_n6_function()
 
 f, X, Y, gradient, theta = drop_wave_function()
 

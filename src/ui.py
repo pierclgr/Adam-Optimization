@@ -85,16 +85,13 @@ def plot_3d_minimization_procedure(X, Y, Z, x_data, y_data, z_data):
     fig.canvas.set_window_title("Descent Animation - 3D View")
     ax.set_title("Descent Animation - 3D View")
     ax.view_init(azim=290)
-    ax.plot_surface(X, Y, Z, rstride=1, cstride=1, color="grey", edgecolor='none', alpha=0.5)
+    ax.plot_surface(X, Y, Z, rstride=1, cstride=1, color="grey", edgecolor='none', alpha=0.25)
 
     line_sgd, = ax.plot([], [], [], lw=2, c='c')
     line_adam, = ax.plot([], [], [], lw=2, c='m')
     line_adamax, = ax.plot([], [], [], lw=2, c='b')
     line_nadam, = ax.plot([], [], [], lw=2, c='r')
     line_amsgrad, = ax.plot([], [], [], lw=2, c='y')
-
-    CS = plt.contour(X, Y, Z)
-    plt.clabel(CS, inline=1, fontsize=10)
 
     plt.legend((line_sgd, line_adam, line_adamax, line_nadam, line_amsgrad),
                ('SGD', 'ADAM', 'ADAMAX', 'NADAM', 'AMSGRAD'))
@@ -136,7 +133,7 @@ def plot_2d_minimization_procedure(X, Y, Z, x_data, y_data):
     line_nadam, = ax.plot([], [], lw=2, c='r')
     line_amsgrad, = ax.plot([], [], lw=2, c='y')
 
-    CS = plt.contour(X, Y, Z)
+    CS = plt.contour(X, Y, Z, colors=['grey'])
     plt.clabel(CS, inline=1, fontsize=10)
 
     plt.legend((line_sgd, line_adam, line_adamax, line_nadam, line_amsgrad),
