@@ -83,11 +83,11 @@ def drop_wave_function():
 
     gradient = {'x': g_x, 'y': g_y}
 
-    x_start = 1
-    y_start = 1
+    x_start = 0.5
+    y_start = 0.5
 
     theta = [x_start, y_start]
 
-    X, Y = np.mgrid[-5.12:5.12:50j, -5.12:5.12:50j]
+    X, Y = np.mgrid[-2:2:50j, -2:2:50j]
 
     return f, X, Y, gradient, theta
