@@ -8,13 +8,17 @@ Created on Sat Mar 14 11:51:52 2020
 from src.ui import print_introduction, plot_graph, plot_3d_minimization_procedure, \
     plot_2d_minimization_procedure  # ,plot_3d_surface
 from src.optimization_algorithms import sgd, adam, adamax, nadam, amsgrad
-from src.functions import sixhump_camel_function, easom_function
+from src.functions import sixhump_camel_function, easom_function, bukin_n6_function, drop_wave_function
 
 print_introduction("Six-hump Camel")
 
 # f, X, Y, gradient, theta = easom_function()
 
-f, X, Y, gradient, theta = sixhump_camel_function()
+#f, X, Y, gradient, theta = sixhump_camel_function()
+
+#f, X, Y, gradient, theta = bukin_n6_function()
+
+f, X, Y, gradient, theta = drop_wave_function()
 
 Z = f(X, Y)
 
