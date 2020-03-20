@@ -5,10 +5,10 @@ Created on Sat Mar 14 11:51:52 2020
 @author: Pierpasquale Colagrande
 """
 
-from ui import print_introduction, plot_graph, plot_3d_minimization_procedure, \
+from src.ui import print_introduction, plot_graph, plot_3d_minimization_procedure, \
     plot_2d_minimization_procedure  # ,plot_3d_surface
-from optimization_algorithms import sgd, adam, adamax, nadam, amsgrad
-from functions import sixhump_camel_function, easom_function
+from src.optimization_algorithms import sgd, adam, adamax, nadam, amsgrad
+from src.functions import sixhump_camel_function, easom_function
 
 print_introduction("Six-hump Camel")
 

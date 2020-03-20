@@ -82,9 +82,9 @@ def plot_3d_minimization_procedure(X, Y, Z, x_data, y_data, z_data):
 
     fig = plt.figure(figsize=(10, 6))
     ax = fig.add_subplot(projection='3d')
-    fig.canvas.set_window_title("3D Surface")
-    ax.set_title("3D Surface")
-    ax.view_init(azim=300)
+    fig.canvas.set_window_title("Descent Animation - 3D View")
+    ax.set_title("Descent Animation - 3D View")
+    ax.view_init(azim=290)
     ax.plot_surface(X, Y, Z, rstride=1, cstride=1, color="grey", edgecolor='none', alpha=0.5)
 
     line_sgd, = ax.plot([], [], [], lw=2, c='c')
@@ -127,8 +127,8 @@ def plot_2d_minimization_procedure(X, Y, Z, x_data, y_data):
         return line_sgd, line_adam, line_adamax, line_nadam, line_amsgrad,
 
     fig, ax = plt.subplots(figsize=(10, 6))
-    fig.canvas.set_window_title('Descent Animation')
-    ax.set_title("Descent Animation")
+    fig.canvas.set_window_title('Descent Animation - Top View')
+    ax.set_title("Descent Animation - Top View")
 
     line_sgd, = ax.plot([], [], lw=2, c='c')
     line_adam, = ax.plot([], [], lw=2, c='m')

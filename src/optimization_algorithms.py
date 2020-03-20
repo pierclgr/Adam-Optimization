@@ -6,7 +6,7 @@ Created on Sat Mar 14 11:51:52 2020
 """
 
 import numpy as np
-from ui import print_head, print_iteration, print_found_minimum
+from src.ui import print_head, print_iteration, print_found_minimum
 
 # Unused import but necessary
 from mpl_toolkits.mplot3d import Axes3D
