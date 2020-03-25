@@ -23,7 +23,7 @@ Since Adam is derived from SGD, these operations are perfomed for each training 
 
 ## Adamax
 
-The v factor in the Adam update rule scales the gradient inversely proportionally to the ℓ2 norm of the past gradients (via the v(t−1) term) and current gradient |g|^2:
+The v factor in the Adam update rule scales the gradient inversely proportionally to the ℓ2 norm of the past gradients (via the v(t−1) term) and current gradient |g|^2:/br
 v = β2 v + (1 - β2) |g|^2
 We can generalize this update to the ℓp norm:
 v = β2^p v + (1 - β2^p) |g|^p
