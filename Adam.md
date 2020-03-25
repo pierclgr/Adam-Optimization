@@ -69,13 +69,13 @@ v is defined the same as in Adam above:
 
 Instead of using v(or its bias-corrected version v_hat) directly, we now employ the previous v(t-1) if it is larger than the current one:
 
-> *v_hat = max(v_hat−1, vt)*
+> *v_hat = max(v_hat, vt)*
 
 This way, AMSGrad results in a non-increasing step size, which avoids the problems suffered by Adam. For simplicity, the authors also remove the debiasing step that we have seen in Adam.
 
 > *m = β1 m + (1 - β1) g*
 > *v = β2 v + (1 - β2) |g|^2*
-> *v_hat = max(v_hat−1, vt)*
+> *v_hat = max(v_hat, vt)*
 > *theta = theta - alpha * m / (√v + ϵ)*
 
 The authors observe improved performance compared to Adam on small datasets and on CIFAR-10
