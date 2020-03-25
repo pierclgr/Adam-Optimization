@@ -36,6 +36,7 @@ Norms for large  p values generally become numerically unstable, which is why �
 v = β2^∞ v + (1 - β2^∞) |g|^∞ = max(β2 v, |g|) 
 
 We can now plug this into the Adam update equation by replacing √v + ϵ to obtain the AdaMax update rule:
+
 theta = theta - alpha * m_hat / v
 
 Note that as v now relies on the max operation, it is not as suggestible to bias towards zero as m and v in Adam, which is why we do not need to compute a bias correction for 
