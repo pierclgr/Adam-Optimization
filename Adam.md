@@ -56,8 +56,11 @@ It implements the Nesterov accelerated momentum using it as m. It basically upda
 ## Amsgrad
 
 In some cases, e.g. for object recognition [17] or machine translation [18] they fail to converge to an optimal solution and are outperformed by SGD with momentum.
-Reddi et al. (2018) formalize this issue and pinpoint the exponential moving average of past squared gradients as a reason for the poor generalization behaviour of adaptive learning rate methods. Recall that the introduction of the exponential average was well-motivated: It should prevent the learning rates to become infinitesimally small as training progresses
-However, this short-term memory of the gradients becomes an obstacle in other scenarios. In settings where Adam converges to a suboptimal solution, it has been observed that some minibatches provide large and informative gradients, but as these minibatches only occur rarely, exponential averaging diminishes their influence, which leads to poor convergence.
+
+Reddi et al. (2018) formalize this issue and pinpoint the exponential moving average of past squared gradients as a reason for the poor generalization behaviour of adaptive learning rate methods. Recall that the introduction of the exponential average was well-motivated: it should prevent the learning rates to become infinitesimally small as training progresses
+However, this short-term memory of the gradients becomes an obstacle in other scenarios. 
+
+In settings where Adam converges to a suboptimal solution, it has been observed that some minibatches provide large and informative gradients, but as these minibatches only occur rarely, exponential averaging diminishes their influence, which leads to poor convergence.
 
 To fix this behaviour, the authors propose a new algorithm, AMSGrad that uses the maximum of past squared gradients v rather than the exponential average to update the parameters. 
 v is defined the same as in Adam above:
