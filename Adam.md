@@ -10,13 +10,21 @@ The disadvantage of SGD is the fact that updating the parameters frequently prod
 ## Adam
 Adaptive Moment Estimation (Adam) is a method that computes adaptive learning rates for each parameter. It stores an exponentially decaying average of past squared gradients 
 v and Adam also keeps an exponentially decaying average of past gradients m, similar to momentum.  We compute the decaying averages of past and past squared gradients m and v respectively as follows: 
-![alt text](https://miro.medium.com/max/886/1*ZhGLUwaaqlJ9C0WK0nbAEA.png)
+
+> *m = β1 m + (1 - β1) g*
+> *v = β2 v + (1 - β2) |g|^2*
+
 m and v are estimates of the first moment (the mean) and the second moment (the uncentered variance) of the gradients respectively.
 As m and v are initialized as vectors of 0's, the authors of Adam observe that they are biased towards zero, especially during the initial time steps.
 They counteract these biases by computing bias-corrected first and second moment estimates:
-![alt text](https://miro.medium.com/max/390/1*M86IUMsrHXq4WrS-Bk5boA.png)
+
+> *m_hat = m / (1 - β1^t)*
+> *v_hat = v / (1 - β2^t)*
+
 Once estimators are calculated and corrected, the parameters are updated using the following formula:
-![alt text](https://miro.medium.com/max/520/1*tKn5TEW-7aQoerAeDB8x6g.png)
+
+> *theta = theta - alpha * m_hat / v*
+
 β1, β2 and ϵ are hyperparameters like alpha (the learning rate), ϵ  is a small scalar used to prevent division by 0 and β1 and β2 control exponential decay.
 The authors propose default values of 0.9 for β1, 0.999 for β2, and 10^(−8) for ϵ
 Since Adam is derived from SGD, these operations are perfomed for each training sample.
@@ -37,7 +45,7 @@ Norms for large  p values generally become numerically unstable, which is why �
 
 We can now plug this into the Adam update equation by replacing √v + ϵ to obtain the AdaMax update rule:
 
-> *theta = theta - alpha * m_hat / v*
+> *theta = theta - alpha * m_hat / (√v_hat + ϵ)*
 
 Note that as v now relies on the max operation, it is not as suggestible to bias towards zero as m and v in Adam, which is why we do not need to compute a bias correction for 
 v(v_hat).
