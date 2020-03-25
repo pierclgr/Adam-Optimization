@@ -23,7 +23,7 @@ They counteract these biases by computing bias-corrected first and second moment
 
 Once estimators are calculated and corrected, the parameters are updated using the following formula:
 
-> *theta = theta - alpha * m_hat / v*
+> *theta = theta - alpha * m_hat / (√v + ϵ)*
 
 β1, β2 and ϵ are hyperparameters like alpha (the learning rate), ϵ  is a small scalar used to prevent division by 0 and β1 and β2 control exponential decay.
 The authors propose default values of 0.9 for β1, 0.999 for β2, and 10^(−8) for ϵ
@@ -45,7 +45,7 @@ Norms for large  p values generally become numerically unstable, which is why �
 
 We can now plug this into the Adam update equation by replacing √v + ϵ to obtain the AdaMax update rule:
 
-> *theta = theta - alpha * m_hat / (√v_hat + ϵ)*
+> *theta = theta - alpha * m_hat / v*
 
 Note that as v now relies on the max operation, it is not as suggestible to bias towards zero as m and v in Adam, which is why we do not need to compute a bias correction for 
 v(v_hat).
