@@ -8,7 +8,7 @@ The formula used to update the parameters θ is
 The disadvantage of SGD is the fact that updating the parameters frequently produces high fluctuations, complicating the convergence to the exact minimum. Fluctuations also causes the algorithm to continuously overshoot.
 
 ## Adam
-Adam uses two estimators called m and t which are respectively the mean and the uncentered variance of the gradients. They are also called first and second momentum.
+Adam uses two estimators called m and v which are respectively the mean and the uncentered variance of the gradients. They are also called first and second momentum.
 ![alt text](https://miro.medium.com/max/886/1*ZhGLUwaaqlJ9C0WK0nbAEA.png)
 Estimators are then *bias corrected*, so two new estimators called m_hat and v_hat are calculated. These are the bias corrected estimators: since we had, in the first iteraction, the estimator initialized to zero, the estimators are biased towards zero. So estimators need to be corrected. This process is called bias correction.
 ![alt text](https://miro.medium.com/max/390/1*M86IUMsrHXq4WrS-Bk5boA.png)
