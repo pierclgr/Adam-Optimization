@@ -40,7 +40,7 @@ We can now plug this into the Adam update equation by replacing √v + ϵ to obt
 > *theta = theta - alpha * m_hat / v*
 
 Note that as v now relies on the max operation, it is not as suggestible to bias towards zero as m and v in Adam, which is why we do not need to compute a bias correction for 
-v.
+v(v_hat).
 
 ## Nadam
 It implements the Nesterov accelerated momentum using it as m. It basically updates the parameters with the momentum step before computing the gradient.
