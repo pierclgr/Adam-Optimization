@@ -8,13 +8,17 @@ The formula used to update the parameters θ is
 The disadvantage of SGD is the fact that updating the parameters frequently produces high fluctuations, complicating the convergence to the exact minimum. Fluctuations also causes the algorithm to continuously overshoot.
 
 ## Adam
-Adam uses two estimators called m and v which are respectively the mean and the uncentered variance of the gradients. They are also called first and second momentum.
+Adaptive Moment Estimation (Adam) is a method that computes adaptive learning rates for each parameter. It stores an exponentially decaying average of past squared gradients 
+v and Adam also keeps an exponentially decaying average of past gradients m, similar to momentum.  We compute the decaying averages of past and past squared gradients m and v respectively as follows: 
 ![alt text](https://miro.medium.com/max/886/1*ZhGLUwaaqlJ9C0WK0nbAEA.png)
-Estimators are then *bias corrected*, so two new estimators called m_hat and v_hat are calculated. These are the bias corrected estimators: since we had, in the first iteraction, the estimator initialized to zero, the estimators are biased towards zero. So estimators need to be corrected. This process is called bias correction.
+m and v are estimates of the first moment (the mean) and the second moment (the uncentered variance) of the gradients respectively.
+As m and v are initialized as vectors of 0's, the authors of Adam observe that they are biased towards zero, especially during the initial time steps.
+They counteract these biases by computing bias-corrected first and second moment estimates:
 ![alt text](https://miro.medium.com/max/390/1*M86IUMsrHXq4WrS-Bk5boA.png)
 Once estimators are calculated and corrected, the parameters are updated using the following formula:
 ![alt text](https://miro.medium.com/max/520/1*tKn5TEW-7aQoerAeDB8x6g.png)
-Beta1, Beta2 and epsilon are hyperparameters like alpha (the learning rate).
+β1, β2 and ϵ are hyperparameters like alpha (the learning rate), ϵ  is a small scalar used to prevent division by 0 and β1 and β2 control exponential decay.
+The authors propose default values of 0.9 for β1, 0.999 for β2, and 10^(−8) for ϵ
 Since Adam is derived from SGD, these operations are perfomed for each training sample.
 
 ## Adamax
