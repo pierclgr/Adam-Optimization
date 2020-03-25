@@ -1,6 +1,4 @@
 """
-Created on Sat Mar 14 11:51:52 2020
-
 @author: Simone Gayed Said
 @author: Pierpasquale Colagrande
 """

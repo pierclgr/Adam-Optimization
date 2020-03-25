@@ -1,6 +1,4 @@
 """
-Created on Sat Mar 14 11:51:52 2020
-
 @author: Simone Gayed Said
 @author: Pierpasquale Colagrande
 """
@@ -33,8 +31,6 @@ def sgd(f, theta, gradient, num_iterations=5000, alpha=0.001):
     return x_data, y_data, z_data
 
 
-# Adam is an adaptive learning rate method, which means, it computes individual learning rates for different parameters.
-# It uses estimations of first and second moments of gradient to adapt the learning rate.
 
 def adam(f, theta, gradient, num_iterations=5000, alpha=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-8):
     algorithm = "Adam"
@@ -64,8 +60,7 @@ def adam(f, theta, gradient, num_iterations=5000, alpha=0.001, beta_1=0.9, beta_
     return x_data, y_data, z_data
 
 
-# The idea with Adamax is to look at the value of the second moment (v) as the L2 norm of the individual current and
-# past gradients.
+
 
 def adamax(f, theta, gradient, num_iterations=5000, alpha=0.001, beta_1=0.9, beta_2=0.999):
     algorithm = "AdaMax"
@@ -93,9 +88,7 @@ def adamax(f, theta, gradient, num_iterations=5000, alpha=0.001, beta_1=0.9, bet
     return x_data, y_data, z_data
 
 
-# The idea of Nadam is to use Nesterov momentum term for the first moving averages. So, with Nesterov accelerated
-# momentum we first make make a big jump in the direction of the previous accumulated gradient and then measure the
-# gradient where we ended up to make a correction.
+
 
 def nadam(f, theta, gradient, num_iterations=5000, alpha=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-8):
     algorithm = "Nadam"
