@@ -22,7 +22,18 @@ The authors propose default values of 0.9 for β1, 0.999 for β2, and 10^(−8) 
 Since Adam is derived from SGD, these operations are perfomed for each training sample.
 
 ## Adamax
-Is similar to Adam but the estimator v is seen as the L2 norm (the distance) between the current gradient and the past gradients.
+
+The v factor in the Adam update rule scales the gradient inversely proportionally to the ℓ2 norm of the past gradients (via the v(t−1) term) and current gradient |g|^2:
+v = β2 v + (1 - β2) |g|^2
+We can generalize this update to the ℓp norm:
+v = β2^p v + (1 - β2^p) |g|^p
+Norms for large  p values generally become numerically unstable, which is why ℓ1 and ℓ2 norms are most common in practice. However, ℓ∞ also generally exhibits stable behavior. For this reason, the authors propose AdaMax and show that v with ℓ∞ converges to the following more stable value. 
+v = β2^∞ v + (1 - β2^∞) |g|^∞
+  = max(β2 v, |g|) 
+We can now plug this into the Adam update equation by replacing √v + ϵ to obtain the AdaMax update rule:
+theta = theta - alpha * m_hat / v
+Note that as v now relies on the max operation, it is not as suggestible to bias towards zero as m and v in Adam, which is why we do not need to compute a bias correction for 
+v.
 
 ## Nadam
 It implements the Nesterov accelerated momentum using it as m. It basically updates the parameters with the momentum step before computing the gradient.
