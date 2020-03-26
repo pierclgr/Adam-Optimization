@@ -57,19 +57,19 @@ It implements the Nesterov accelerated momentum using it as m. It basically upda
 
 In some cases, e.g. for object recognition or machine translation they fail to converge to an optimal solution and are outperformed by SGD with momentum.
 
-Reddi et al. (2018) formalize this issue and pinpoint the exponential moving average of past squared gradients as a reason for the poor generalization behaviour of adaptive learning rate methods. Recall that the introduction of the exponential average was well-motivated: it should prevent the learning rates to become infinitesimally small as training progresses
-However, this short-term memory of the gradients becomes an obstacle in other scenarios. 
+Reddi et al. (2018) formalize this issue and pinpoint the exponential moving average of past squared gradients (v) as a reason for the poor generalization behaviour of adaptive learning rate methods. Recall that the introduction of the exponential average was well-motivated: it should prevent the learning rates to become infinitesimally small as training progresses
+. However, this short-term memory of the gradients becomes an obstacle in other scenarios. 
 
 In settings where Adam converges to a suboptimal solution, it has been observed that some minibatches provide large and informative gradients, but as these minibatches only occur rarely, exponential averaging diminishes their influence, which leads to poor convergence.
 
-To fix this behaviour, the authors propose a new algorithm, AMSGrad that uses the maximum of past squared gradients v rather than the exponential average to update the parameters. 
+To fix this behaviour, the authors propose a new algorithm, AMSGrad that uses the maximum of past squared gradients v rather than the exponential average (v / (1 - β2^t))) to update the parameters. 
 v is defined the same as in Adam above:
 
 > *v = β2 v + (1 - β2) |g|^2*
 
-Instead of using v(or its bias-corrected version v_hat) directly, we now employ the previous v(t-1) if it is larger than the current one:
+Instead of using v (or its bias-corrected version v_hat) directly, we now employ the previous v(t-1) if it is larger than the current one:
 
-> *v_hat = max(v_hat, vt)*
+> *v_hat = max(v_hat, v)*
 
 This way, AMSGrad results in a non-increasing step size, which avoids the problems suffered by Adam. For simplicity, the authors also remove the debiasing step that we have seen in Adam.
 
@@ -77,7 +77,7 @@ This way, AMSGrad results in a non-increasing step size, which avoids the proble
 
 > *v = β2 v + (1 - β2) |g|^2*
 
-> *v_hat = max(v_hat, vt)*
+> *v_hat = max(v_hat, v)*
 
 > *theta = theta - alpha * m / (√v_hat + ϵ)*
 
