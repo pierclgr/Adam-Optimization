@@ -23,7 +23,7 @@ They counteract these biases by computing bias-corrected first and second moment
 
 Once estimators are calculated and corrected, the parameters are updated using the following formula:
 
-> *theta = theta - alpha * m_hat / (√v + ϵ)*
+> *theta = theta - alpha * m_hat / (√v_hat + ϵ)*
 
 β1, β2 and ϵ are hyperparameters like alpha (the learning rate), ϵ  is a small scalar used to prevent division by 0 and β1 and β2 control exponential decay.
 The authors propose default values of 0.9 for β1, 0.999 for β2, and 10^(−8) for ϵ
@@ -79,7 +79,7 @@ This way, AMSGrad results in a non-increasing step size, which avoids the proble
 
 > *v_hat = max(v_hat, vt)*
 
-> *theta = theta - alpha * m / (√v + ϵ)*
+> *theta = theta - alpha * m / (√v_hat + ϵ)*
 
 The authors observe improved performance compared to Adam on small datasets and on CIFAR-10
 
