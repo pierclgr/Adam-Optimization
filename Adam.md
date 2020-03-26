@@ -62,7 +62,7 @@ Reddi et al. (2018) formalize this issue and pinpoint the exponential moving ave
 
 In settings where Adam converges to a suboptimal solution, it has been observed that some minibatches provide large and informative gradients, but as these minibatches only occur rarely, exponential averaging diminishes their influence, which leads to poor convergence.
 
-To fix this behaviour, the authors propose a new algorithm, AMSGrad that uses the maximum of past squared gradients v rather than the exponential average (v / (1 - β2^t))) to update the parameters. 
+To fix this behaviour, the authors propose a new algorithm, AMSGrad that uses the maximum of past squared gradients v rather than the exponential average to update the parameters. 
 v is defined the same as in Adam above:
 
 > *v = β2 v + (1 - β2) |g|^2*
