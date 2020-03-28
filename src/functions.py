@@ -22,7 +22,11 @@ def sixhump_camel_function():
 
     X, Y = np.mgrid[-3:3:50j, -2:2:50j]
 
-    return f, X, Y, gradient, theta
+    minimum = {'X': [0.0898, -0.0898], 'Y': [-0.7126, 0.7126], 'Z': [-1.0316, -1.0316]}
+
+    name = "Sixhump Camel"
+
+    return f, X, Y, gradient, theta, minimum, name
 
 
 def easom_function():
@@ -36,14 +40,18 @@ def easom_function():
 
     gradient = {'x': g_x, 'y': g_y}
 
-    x_start = 1.4
+    x_start = 1.7
     y_start = 3
 
     theta = [x_start, y_start]
 
     X, Y = np.mgrid[-2.5:7.5:50j, -2.5:7.5:50j]
 
-    return f, X, Y, gradient, theta
+    minimum = {'X': [np.pi], 'Y': [np.pi], 'Z': [-1]}
+
+    name = "Easom"
+
+    return f, X, Y, gradient, theta, minimum, name
 
 
 def bukin_n6_function():
@@ -63,7 +71,11 @@ def bukin_n6_function():
 
     X, Y = np.mgrid[-15:-5:50j, -3:3:50j]
 
-    return f, X, Y, gradient, theta
+    minimum = {'X': [-10], 'Y': [1], 'Z': [0]}
+
+    name = "Bukin N6"
+
+    return f, X, Y, gradient, theta, minimum, name
 
 
 def drop_wave_function():
@@ -88,4 +100,31 @@ def drop_wave_function():
 
     X, Y = np.mgrid[-2:2:50j, -2:2:50j]
 
-    return f, X, Y, gradient, theta
+    minimum = {'X': [0], 'Y': [0], 'Z': [-1]}
+
+    name = "Dropwave"
+
+    return f, X, Y, gradient, theta, minimum, name
+
+
+def matyas_function():
+    f = lambda x, y: 0.26 * (x ** 2 + y ** 2) - 0.48 * x * y
+
+    g_x = lambda x, y: 0.52 * x - 0.48 * y
+
+    g_y = lambda x, y: 0.52 * y - 0.48 * x
+
+    gradient = {'x': g_x, 'y': g_y}
+
+    x_start = -10
+    y_start = 10
+
+    theta = [x_start, y_start]
+
+    X, Y = np.mgrid[-10:10:50j, -10:10:50j]
+
+    minimum = {'X': [0], 'Y': [0], 'Z': [0]}
+
+    name = "Matyas"
+
+    return f, X, Y, gradient, theta, minimum, name

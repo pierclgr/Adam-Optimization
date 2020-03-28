@@ -31,15 +31,14 @@ def sgd(f, theta, gradient, num_iterations=5000, alpha=0.001):
     return x_data, y_data, z_data
 
 
-
 def adam(f, theta, gradient, num_iterations=5000, alpha=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-8):
     algorithm = "Adam"
     print_head(algorithm, {'num_iterations': num_iterations, 'alpha': alpha, 'beta_1': beta_1, 'beta_2': beta_2,
                            'epsilon': epsilon})
 
     x_data, y_data, z_data = [theta[0]], [theta[1]], [f(theta[0], theta[1])]
-    m = 0
-    v = 0
+    m = np.zeros(shape=2)
+    v = np.zeros(shape=2)
     g = np.zeros(shape=2)
     t = 0
     while t < num_iterations:
@@ -60,15 +59,13 @@ def adam(f, theta, gradient, num_iterations=5000, alpha=0.001, beta_1=0.9, beta_
     return x_data, y_data, z_data
 
 
-
-
 def adamax(f, theta, gradient, num_iterations=5000, alpha=0.001, beta_1=0.9, beta_2=0.999):
     algorithm = "AdaMax"
     print_head(algorithm, {'num_iterations': num_iterations, 'alpha': alpha, 'beta_1': beta_1, 'beta_2': beta_2})
 
     x_data, y_data, z_data = [theta[0]], [theta[1]], [f(theta[0], theta[1])]
-    m = 0
-    v = 0
+    m = np.zeros(shape=2)
+    v = np.zeros(shape=2)
     g = np.zeros(shape=2)
     t = 0
     while t < num_iterations:
@@ -88,16 +85,14 @@ def adamax(f, theta, gradient, num_iterations=5000, alpha=0.001, beta_1=0.9, bet
     return x_data, y_data, z_data
 
 
-
-
 def nadam(f, theta, gradient, num_iterations=5000, alpha=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-8):
     algorithm = "Nadam"
     print_head(algorithm, {'num_iterations': num_iterations, 'alpha': alpha, 'beta_1': beta_1, 'beta_2': beta_2,
                            'epsilon': epsilon})
 
     x_data, y_data, z_data = [theta[0]], [theta[1]], [f(theta[0], theta[1])]
-    m = 0
-    v = 0
+    m = np.zeros(shape=2)
+    v = np.zeros(shape=2)
     g = np.zeros(shape=2)
     t = 0
     while t < num_iterations:
@@ -118,18 +113,15 @@ def nadam(f, theta, gradient, num_iterations=5000, alpha=0.001, beta_1=0.9, beta
     return x_data, y_data, z_data
 
 
-# Algorithm created to fix the convergence issues of Adam by endowing such algorithms with “long-term memory” of past
-# gradients. This algorithm often also lead to improved empirical performance.
-
 def amsgrad(f, theta, gradient, num_iterations=5000, alpha=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-8):
     algorithm = "AMSGrad"
     print_head(algorithm, {'num_iterations': num_iterations, 'alpha': alpha, 'beta_1': beta_1, 'beta_2': beta_2,
                            'epsilon': epsilon})
 
     x_data, y_data, z_data = [theta[0]], [theta[1]], [f(theta[0], theta[1])]
-    m = 0
-    v = 0
-    v_hat = 0
+    m = np.zeros(shape=2)
+    v = np.zeros(shape=2)
+    v_hat = np.zeros(shape=2)
     g = np.zeros(shape=2)
     t = 0
     while t < num_iterations:
