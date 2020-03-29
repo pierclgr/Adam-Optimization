@@ -44,9 +44,9 @@ ADAGRAD:
 ADAM:
 - The decreasing of the learning rate is slower (it prevent the learning rates to become infinitesimally small as training progresses)
 - Limiting the reliance of the update to only the past few gradients (“short-term memory” of past gradients).
-- - Limiting the reliance of the update on essentially only the past few gradients can cause significant convergence issues
-- - The step size can potentially be indefinite (can increse and decrese)
-- - - this violation of positive definiteness can lead to undesirable convergence behavior for ADAM
+	- Limiting the reliance of the update on essentially only the past few gradients can cause significant convergence issues
+	- The step size can potentially be indefinite (can increse and decrese)
+		- this violation of positive definiteness can lead to undesirable convergence behavior for ADAM
 
 In settings where Adam converges to a suboptimal solution, it has been observed that some minibatches provide large and informative gradients, but as these minibatches only occur rarely, exponential averaging diminishes their influence, which leads to poor convergence.
 
