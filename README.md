@@ -3,5 +3,4 @@ A comparison between implementations of different gradient-based optimization al
 
 ## Initial Work
 Pierpasquale Colagrande - [pierclgr](https://github.com/pierclgr)
-
 Simone Gayed Said - [guyez](https://github.com/guyez)
