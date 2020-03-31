@@ -22,11 +22,11 @@ print_introduction(name, minimum)
 
 Z = f(X, Y)
 
-x_data_sgd, y_data_sgd, z_data_sgd = sgd(f, theta, gradient)
-x_data_adam, y_data_adam, z_data_adam = adam(f, theta, gradient)
-x_data_adamax, y_data_adamax, z_data_adamax = adamax(f, theta, gradient)
-x_data_nadam, y_data_nadam, z_data_nadam = nadam(f, theta, gradient)
-x_data_amsgrad, y_data_amsgrad, z_data_amsgrad = amsgrad(f, theta, gradient)
+sgd_min, x_data_sgd, y_data_sgd, z_data_sgd = sgd(f, theta, gradient)
+adam_min, x_data_adam, y_data_adam, z_data_adam = adam(f, theta, gradient)
+adamax_min, x_data_adamax, y_data_adamax, z_data_adamax = adamax(f, theta, gradient)
+nadam_min, x_data_nadam, y_data_nadam, z_data_nadam = nadam(f, theta, gradient)
+amsgrad_min, x_data_amsgrad, y_data_amsgrad, z_data_amsgrad = amsgrad(f, theta, gradient)
 
 x_data = {'sgd': x_data_sgd, 'adam': x_data_adam, 'adamax': x_data_adamax, 'nadam': x_data_nadam,
           'amsgrad': x_data_amsgrad}

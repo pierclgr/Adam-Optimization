@@ -28,7 +28,7 @@ def sgd(f, theta, gradient, num_iterations=5000, alpha=0.001):
         if t % (num_iterations / 10) == 0:
             print_iteration(theta, t)
     print_found_minimum(theta, t)
-    return x_data, y_data, z_data
+    return theta, x_data, y_data, z_data
 
 
 def adam(f, theta, gradient, num_iterations=5000, alpha=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-8):
@@ -56,7 +56,7 @@ def adam(f, theta, gradient, num_iterations=5000, alpha=0.001, beta_1=0.9, beta_
         if t % (num_iterations / 10) == 0:
             print_iteration(theta, t)
     print_found_minimum(theta, t)
-    return x_data, y_data, z_data
+    return theta, x_data, y_data, z_data
 
 
 def adamax(f, theta, gradient, num_iterations=5000, alpha=0.001, beta_1=0.9, beta_2=0.999):
@@ -82,7 +82,7 @@ def adamax(f, theta, gradient, num_iterations=5000, alpha=0.001, beta_1=0.9, bet
         if t % (num_iterations / 10) == 0:
             print_iteration(theta, t)
     print_found_minimum(theta, t)
-    return x_data, y_data, z_data
+    return theta, x_data, y_data, z_data
 
 
 def nadam(f, theta, gradient, num_iterations=5000, alpha=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-8):
@@ -110,7 +110,7 @@ def nadam(f, theta, gradient, num_iterations=5000, alpha=0.001, beta_1=0.9, beta
         if t % (num_iterations / 10) == 0:
             print_iteration(theta, t)
     print_found_minimum(theta, t)
-    return x_data, y_data, z_data
+    return theta, x_data, y_data, z_data
 
 
 def amsgrad(f, theta, gradient, num_iterations=5000, alpha=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-8):
@@ -138,4 +138,4 @@ def amsgrad(f, theta, gradient, num_iterations=5000, alpha=0.001, beta_1=0.9, be
         if t % (num_iterations / 10) == 0:
             print_iteration(theta, t)
     print_found_minimum(theta, t)
-    return x_data, y_data, z_data
+    return theta, x_data, y_data, z_data
