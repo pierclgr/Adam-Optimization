@@ -10,8 +10,8 @@ from src.ui import print_head, print_iteration, print_found_minimum
 from mpl_toolkits.mplot3d import Axes3D
 
 
-def sgd(f, theta, gradient, num_iterations=5000, alpha=0.001):
-    algorithm = "SGD"
+def gd(f, theta, gradient, num_iterations=5000, alpha=0.001):
+    algorithm = "GD"
     print_head(algorithm, {'num_iterations': num_iterations, 'alpha': alpha})
 
     x_data, y_data, z_data = [theta[0]], [theta[1]], [f(theta[0], theta[1])]
