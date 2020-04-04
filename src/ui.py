@@ -46,8 +46,8 @@ def print_found_minimum(theta, iteration):
 
 def plot_3d_minimization_procedure(X, Y, Z, x_data, y_data, z_data, minimum):
     def init():
-        line_sgd.set_data([], [])
-        line_sgd.set_3d_properties([])
+        line_gd.set_data([], [])
+        line_gd.set_3d_properties([])
 
         line_adam.set_data([], [])
         line_adam.set_3d_properties([])
@@ -61,11 +61,11 @@ def plot_3d_minimization_procedure(X, Y, Z, x_data, y_data, z_data, minimum):
         line_amsgrad.set_data([], [])
         line_amsgrad.set_3d_properties([])
 
-        return line_sgd, line_adam, line_adamax, line_nadam, line_amsgrad,
+        return line_gd, line_adam, line_adamax, line_nadam, line_amsgrad,
 
     def animate(i):
-        line_sgd.set_data(x_data['sgd'][:i][::-1], y_data['sgd'][:i][::-1])
-        line_sgd.set_3d_properties(z_data['sgd'][:i][::-1])
+        line_gd.set_data(x_data['gd'][:i][::-1], y_data['gd'][:i][::-1])
+        line_gd.set_3d_properties(z_data['gd'][:i][::-1])
 
         line_adam.set_data(x_data['adam'][:i][::-1], y_data['adam'][:i][::-1])
         line_adam.set_3d_properties(z_data['adam'][:i][::-1])
@@ -79,7 +79,7 @@ def plot_3d_minimization_procedure(X, Y, Z, x_data, y_data, z_data, minimum):
         line_amsgrad.set_data(x_data['amsgrad'][:i][::-1], y_data['amsgrad'][:i][::-1])
         line_amsgrad.set_3d_properties(z_data['amsgrad'][:i][::-1])
 
-        return line_sgd, line_adam, line_adamax, line_nadam, line_amsgrad,
+        return line_gd, line_adam, line_adamax, line_nadam, line_amsgrad,
 
     fig = plt.figure(figsize=(10, 6))
     ax = fig.add_subplot(projection='3d')
@@ -90,14 +90,14 @@ def plot_3d_minimization_procedure(X, Y, Z, x_data, y_data, z_data, minimum):
 
     ax.scatter(minimum['X'], minimum['Y'], minimum['Z'], marker="*", color="red", alpha=0.7, s=150)
 
-    line_sgd, = ax.plot([], [], [], "-o", lw=2, color='blue', markevery=10000)
+    line_gd, = ax.plot([], [], [], "-o", lw=2, color='blue', markevery=10000)
     line_adam, = ax.plot([], [], [], "-o", lw=2, color='green', markevery=10000)
     line_adamax, = ax.plot([], [], [], "-o", lw=2, color='magenta', markevery=10000)
     line_nadam, = ax.plot([], [], [], "-o", lw=2, color='yellow', markevery=10000)
     line_amsgrad, = ax.plot([], [], [], "-o", lw=2, color='orange', markevery=10000)
 
-    plt.legend((line_sgd, line_adam, line_adamax, line_nadam, line_amsgrad),
-               ('SGD', 'ADAM', 'ADAMAX', 'NADAM', 'AMSGRAD'))
+    plt.legend((line_gd, line_adam, line_adamax, line_nadam, line_amsgrad),
+               ('GD', 'ADAM', 'ADAMAX', 'NADAM', 'AMSGRAD'))
     animation.FuncAnimation(fig, animate, init_func=init, frames=5000, interval=1, blit=True, repeat=False)
 
     plt.show()
@@ -105,16 +105,16 @@ def plot_3d_minimization_procedure(X, Y, Z, x_data, y_data, z_data, minimum):
 
 def plot_2d_minimization_procedure(X, Y, Z, x_data, y_data, minimum):
     def init():
-        line_sgd.set_data([], [])
+        line_gd.set_data([], [])
         line_adam.set_data([], [])
         line_adamax.set_data([], [])
         line_nadam.set_data([], [])
         line_amsgrad.set_data([], [])
 
-        return line_sgd, line_adam, line_adamax, line_nadam, line_amsgrad,
+        return line_gd, line_adam, line_adamax, line_nadam, line_amsgrad,
 
     def animate(i):
-        line_sgd.set_data(x_data['sgd'][:i][::-1], y_data['sgd'][:i][::-1])
+        line_gd.set_data(x_data['gd'][:i][::-1], y_data['gd'][:i][::-1])
 
         line_adam.set_data(x_data['adam'][:i][::-1], y_data['adam'][:i][::-1])
 
@@ -124,7 +124,7 @@ def plot_2d_minimization_procedure(X, Y, Z, x_data, y_data, minimum):
 
         line_amsgrad.set_data(x_data['amsgrad'][:i][::-1], y_data['amsgrad'][:i][::-1])
 
-        return line_sgd, line_adam, line_adamax, line_nadam, line_amsgrad,
+        return line_gd, line_adam, line_adamax, line_nadam, line_amsgrad,
 
     fig, ax = plt.subplots(figsize=(10, 6))
     fig.canvas.set_window_title('Descent Animation - Top View')
@@ -132,7 +132,7 @@ def plot_2d_minimization_procedure(X, Y, Z, x_data, y_data, minimum):
 
     ax.scatter(minimum['X'], minimum['Y'], marker="*", color="red", alpha=0.7, s=150)
 
-    line_sgd, = ax.plot([], [], "-o", lw=2, color='blue', markevery=10000)
+    line_gd, = ax.plot([], [], "-o", lw=2, color='blue', markevery=10000)
     line_adam, = ax.plot([], [], "-o", lw=2, color='green', markevery=10000)
     line_adamax, = ax.plot([], [], "-o", lw=2, color='magenta', markevery=10000)
     line_nadam, = ax.plot([], [], "-o", lw=2, color='yellow', markevery=10000)
@@ -141,8 +141,8 @@ def plot_2d_minimization_procedure(X, Y, Z, x_data, y_data, minimum):
     CS = plt.contour(X, Y, Z, colors=['grey'])
     plt.clabel(CS, inline=1, fontsize=10)
 
-    plt.legend((line_sgd, line_adam, line_adamax, line_nadam, line_amsgrad),
-               ('SGD', 'ADAM', 'ADAMAX', 'NADAM', 'AMSGRAD'))
+    plt.legend((line_gd, line_adam, line_adamax, line_nadam, line_amsgrad),
+               ('GD', 'ADAM', 'ADAMAX', 'NADAM', 'AMSGRAD'))
     animation.FuncAnimation(fig, animate, init_func=init, frames=5000, interval=1, blit=True, repeat=False)
 
     plt.show()
@@ -153,12 +153,12 @@ def plot_graph(data, axis='x'):
     fig.canvas.set_window_title(axis.upper() + " axis")
     ax.set_title(axis.upper() + " axis")
 
-    plt.plot(data['sgd'], color="blue")
+    plt.plot(data['gd'], color="blue")
     plt.plot(data['adam'], color="green")
     plt.plot(data['adamax'], color="magenta")
     plt.plot(data['nadam'], color="yellow")
     plt.plot(data['amsgrad'], color="orange")
     plt.ylabel(axis)
     plt.xlabel('iterations')
-    plt.legend(['SGD', 'ADAM', 'ADAMAX', 'NADAM', 'AMSGRAD'], loc='upper right')
+    plt.legend(['GD', 'ADAM', 'ADAMAX', 'NADAM', 'AMSGRAD'], loc='upper right')
     plt.show()
